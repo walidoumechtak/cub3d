@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/19 16:46:21 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:23:51 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ int	anim(t_cub *cub)
 		rays(cub);
 		mini_map(cub);
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
+		build_msg(cub);
 		pthread_mutex_lock(&cub->mut);
-		printf("gunsinc = %d\n", inc);
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[inc], WIDTH / 2 - 250, HEIGHT - 281);
 		inc = cub->guns_inc;
 		pthread_mutex_unlock(&cub->mut);
@@ -81,7 +81,6 @@ int change_view(int button, int x, int y, t_cub *cub)
 {
 	(void)y;
 	(void)x;
-	printf("button %d\n", button);
 	if (button == 1 || button == 5)
 	{
 		cub->ply.dir = cub->ply.dir - deg_to_rad(R_VIEW);
@@ -91,7 +90,6 @@ int change_view(int button, int x, int y, t_cub *cub)
 	else if (button == 2 || button == 4)
 	{
 		cub->ply.dir = cub->ply.dir + deg_to_rad(R_VIEW);
-		printf("here x\n");
 		if (cub->ply.dir > 2 * M_PI)
 			cub->ply.dir = 0;
 	}

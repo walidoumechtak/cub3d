@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/19 16:46:00 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 12:43:18 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,9 @@ typedef struct s_cub
 	int				flag_terminated;
 	double			x_midle_ray;
 	double			y_midle_ray;
+	void	*door;
+	int	door_width;
+	int	door_height;
 	t_player		ply;
 	t_data			data;
 }					t_cub;

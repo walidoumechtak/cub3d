@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:04:16 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/18 14:28:21 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:53:11 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,38 +75,70 @@ void    draw_wal(t_cub *cub, char flag, int x, int WALL_TEXTR)
     {
         rest = (cub->ph_inter_x / CARRE) - (int)(cub->ph_inter_x / CARRE);
         
-        cub->dis_h = fabs(cos(fabs(cub->ray_dir - cub->ply.dir)) * (cub->dis_h)); // correcte the fish eye;
-        //wall_height = ((CARRE * HEIGHT) / cub->dis_h);
+        cub->dis_h = fabs(cos(fabs(cub->ray_dir - cub->ply.dir)) * (cub->dis_h));
         wall_height = ((CARRE / cub->dis_h) * cub->dis_proj_plan);
         start_wall = ((HEIGHT / 2) - (wall_height / 2));
         if (WALL_TEXTR == 'T')
         {
-            cub->x_offset = rest * cub->tex_size.no_width;
-            draw_textures(cub, wall_height,  start_wall, x, cub->no_ptr, cub->tex_size.no_height);
+            if (cub->map[(int)cub->ph_inter_y / CARRE][(int)cub->ph_inter_x / CARRE] == '2')
+            {
+                cub->x_offset = rest * cub->door_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->door, cub->door_height);
+            }
+            else
+            {
+                cub->x_offset = rest * cub->tex_size.no_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->no_ptr, cub->tex_size.no_height);
+            }
         }
         else
         {
-            cub->x_offset = rest * cub->tex_size.so_width;
-            draw_textures(cub, wall_height, start_wall, x, cub->so_ptr, cub->tex_size.so_height);
+             if (cub->map[(int)cub->ph_inter_y / CARRE][(int)cub->ph_inter_x / CARRE] == '2')
+            {
+                cub->x_offset = rest * cub->door_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->door, cub->door_height);
+            }
+            else
+            {
+                cub->x_offset = rest * cub->tex_size.so_width;
+                draw_textures(cub, wall_height, start_wall, x, cub->so_ptr, cub->tex_size.so_height);
+            }
+            
         }
             
     }
     else
     {
         rest = (cub->pv_inter_y / CARRE) - (int)(cub->pv_inter_y / CARRE);            
-        cub->dis_v = fabs(cos(fabs(cub->ray_dir - cub->ply.dir)) * (cub->dis_v)); // correcte the fish eye;
-       // wall_height = ((CARRE * HEIGHT) / cub->dis_v);
+        cub->dis_v = fabs(cos(fabs(cub->ray_dir - cub->ply.dir)) * (cub->dis_v));
         wall_height = ((CARRE / cub->dis_v) * cub->dis_proj_plan);
         start_wall = ((HEIGHT / 2) - (wall_height / 2));
         if (WALL_TEXTR == 'R')
         {
-            cub->x_offset = rest * cub->tex_size.we_width;
-            draw_textures(cub, wall_height,  start_wall, x, cub->we_ptr, cub->tex_size.we_height);
+            if (cub->map[(int)cub->pv_inter_y / CARRE][(int)cub->pv_inter_x / CARRE] == '2')
+            {
+                cub->x_offset = rest * cub->door_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->door, cub->door_height);
+            }
+            else
+            {
+                cub->x_offset = rest * cub->tex_size.we_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->we_ptr, cub->tex_size.we_height);
+            }
         }
         else if (WALL_TEXTR == 'L')
         {
-            cub->x_offset = rest * cub->tex_size.ea_width;
-            draw_textures(cub, wall_height,  start_wall, x, cub->ea_ptr, cub->tex_size.ea_height);
+            if (cub->map[(int)cub->pv_inter_y / CARRE][(int)cub->pv_inter_x / CARRE] == '2')
+            {
+                cub->x_offset = rest * cub->door_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->door, cub->door_height);
+            }
+            else
+            {
+                cub->x_offset = rest * cub->tex_size.ea_width;
+                draw_textures(cub, wall_height,  start_wall, x, cub->ea_ptr, cub->tex_size.ea_height);
+            }
+            
         }
     }
     

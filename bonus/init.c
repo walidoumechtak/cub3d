@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/20 11:43:01 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:08:12 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void    fill_guns_array(t_cub *cub)
 }
 
 void    init_str(t_cub *cub)
-{
+{   
     get_player_cord(cub);
     cub->ply.pixel_x = cub->ply.xp * CARRE;
     cub->ply.pixel_y = cub->ply.yp * CARRE;
@@ -81,6 +81,7 @@ void    init_str(t_cub *cub)
 	cub->ea_ptr = mlx_xpm_file_to_image(cub->mlx, cub->ea, &cub->tex_size.ea_width, &cub->tex_size.ea_height);
 	cub->so_ptr = mlx_xpm_file_to_image(cub->mlx, cub->so, &cub->tex_size.so_width, &cub->tex_size.so_height);
 	cub->we_ptr = mlx_xpm_file_to_image(cub->mlx,cub->we, &cub->tex_size.we_width, &cub->tex_size.we_height);
+    cub->door = mlx_xpm_file_to_image(cub->mlx, "textures/exit.xpm", &cub->door_width, &cub->door_height);
 	fill_guns_array(cub);
 	cub->guns_inc = 1;
     cub->flag_terminated = 0;
