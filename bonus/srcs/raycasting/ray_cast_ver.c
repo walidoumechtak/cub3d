@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:10:03 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/16 11:45:46 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:37:41 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int    ray_cast_ver(t_cub *cub)
     }
     if (x == 1)
         return (1);
-    if (cub->map[(int)(cub->pv_inter_y / CARRE)][(int)(cub->pv_inter_x / CARRE)] == '1')
+    if (cub->map[(int)(cub->pv_inter_y / CARRE)][(int)(cub->pv_inter_x / CARRE)] == '1'
+        || cub->map[(int)(cub->pv_inter_y / CARRE)][(int)(cub->pv_inter_x / CARRE)] == '2')
         return (1);
     else
     {

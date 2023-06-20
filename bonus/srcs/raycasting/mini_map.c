@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:16:02 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 15:53:46 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:45:39 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ void	mini_map(t_cub *cub)
 					/ CARRE] == 'S' || cub->map[i / CARRE][j / CARRE] == 'W'
 					|| cub->map[i / CARRE][j / CARRE] == 'E')
 				my_mlx_pixel_put(&cub->data, l * 0.7, k * 0.7, 0xFFFFFF);
+			else if (cub->map[i / CARRE][j / CARRE] == '2')
+				my_mlx_pixel_put(&cub->data,  l * 0.7, k * 0.7, GOLD);
 			j++;
 			l++;
 		}

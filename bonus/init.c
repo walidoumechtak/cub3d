@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 15:48:06 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:43:01 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ void    init_str(t_cub *cub)
 	fill_guns_array(cub);
 	cub->guns_inc = 1;
     cub->flag_terminated = 0;
+    cub->x_midle_ray = -1;
+    cub->y_midle_ray = -1;
 }

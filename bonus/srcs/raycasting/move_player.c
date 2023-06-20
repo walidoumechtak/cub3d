@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:15:07 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 15:49:16 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:46:43 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	check_other_side(t_cub *cub, int x, int y)
 		i = sin(eng) * 5;
 		j = cos(eng) * 5;
 		if (cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == '1'
-			|| cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == ' ')
+			|| cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == ' '
+			|| cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == '2')
 			return (1);
 		eng += incr;
 	}
@@ -47,7 +48,8 @@ void	move_player(t_cub *cub, double rot)
 		x += ((cos(cub->ply.dir + rot)) * cub->ply.dir_vec);
 		y += ((sin(cub->ply.dir + rot)) * cub->ply.dir_vec);
 		if (cub->map[((int)y) / CARRE][((int)x) / CARRE] == '1'
-			|| cub->map[((int)y) / CARRE][((int)x) / CARRE] == ' ')
+			|| cub->map[((int)y) / CARRE][((int)x) / CARRE] == ' '
+			|| cub->map[((int)y) / CARRE][((int)x) / CARRE] == '2')
 		{
 			cub->is_wall = 1;
 			return ;

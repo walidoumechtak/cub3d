@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:03:12 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 16:00:34 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:42:25 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void    rays(t_cub *cub)
                     draw_wal(cub, 'V', xxx, 'L');
                 else
                     draw_wal(cub, 'V', xxx, 'R');
-                if (cub->ray_dir == cub->ply.dir)
+                if (cub->ray_dir == cub->ply.dir && cub->map[(int)cub->pv_inter_y / CARRE][(int)cub->pv_inter_x / CARRE] == '2')
                 {
                     cub->x_midle_ray = cub->pv_inter_x;
                     cub->y_midle_ray = cub->pv_inter_y;
@@ -39,7 +39,7 @@ void    rays(t_cub *cub)
                     draw_wal(cub, 'H', xxx, 'T');
                 else
                     draw_wal(cub, 'H', xxx, 'B');
-                if (cub->ray_dir == cub->ply.dir)
+                if (cub->ray_dir == cub->ply.dir && cub->map[(int)cub->ph_inter_y / CARRE][(int)cub->ph_inter_x / CARRE] == '2')
                 {
                     cub->x_midle_ray = cub->ph_inter_x;
                     cub->y_midle_ray = cub->ph_inter_y;
