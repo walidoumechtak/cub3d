@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:02:04 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 13:36:51 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:37:20 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	event_handler(int key, t_cub *cub)
 	if (key == 53)
 		exit(0);
 	else if (key == 13 || key == 0 || key == 1 || key == 2 || key == 126
-			|| key == 125)
+		|| key == 125)
 	{
 		mlx_clear_window(cub->mlx, cub->mlx_win);
 		movement(cub, key);

@@ -1,10 +1,10 @@
-NO textures/brick.xpm
-SO textures/tile2.xpm
-WE textures/brick2.xpm
-EA textures/green.xpm
+NO textures/off/off1.xpm
+SO textures/off/off2.xpm
+WE textures/off/off3.xpm
+EA textures/off/off4.xpm
 
 F 0,0,0
-C 0,202,252
+C 0,0,80
 
         1111111111111111111111111
         1000000000110000000000001

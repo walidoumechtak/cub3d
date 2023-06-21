@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 13:33:58 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:49:03 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,18 @@ void	get_player_cord(t_cub *cub)
 	}
 }
 
+void	starting_player(t_cub *cub)
+{
+	if (cub->map[cub->ply.yp][cub->ply.xp] == 'N')
+		cub->ply.dir = deg_to_rad(270);
+	else if (cub->map[cub->ply.yp][cub->ply.xp] == 'S')
+		cub->ply.dir = deg_to_rad(90);
+	else if (cub->map[cub->ply.yp][cub->ply.xp] == 'W')
+		cub->ply.dir = deg_to_rad(180);
+	else if (cub->map[cub->ply.yp][cub->ply.xp] == 'E')
+		cub->ply.dir = deg_to_rad(0);
+}
+
 void	init_str(t_cub *cub)
 {
 	get_player_cord(cub);
@@ -44,15 +56,10 @@ void	init_str(t_cub *cub)
 	cub->ply.move_speed = 3;
 	cub->ply.dir_vec = 0;
 	cub->is_wall = 0;
-	if (cub->map[cub->ply.yp][cub->ply.xp] == 'N')
-		cub->ply.dir = deg_to_rad(270);
-	cub->ply.fov = deg_to_rad(60);
 	cub->ray_dir = (cub->ply.dir - (deg_to_rad(30)));
 	cub->dis_proj_plan = (WIDTH / 2) / tan(deg_to_rad(30));
 	cub->dis_h = 0;
 	cub->dis_v = 0;
-	cub->ply.end_xline = 63 + (cos(cub->ply.dir) * (25));
-	cub->ply.end_yline = 63 + (sin(cub->ply.dir) * (25));
 	cub->no_ptr = mlx_xpm_file_to_image(cub->mlx, cub->no,
 			&cub->tex_size.no_width, &cub->tex_size.no_height);
 	cub->ea_ptr = mlx_xpm_file_to_image(cub->mlx, cub->ea,
@@ -61,5 +68,5 @@ void	init_str(t_cub *cub)
 			&cub->tex_size.so_width, &cub->tex_size.so_height);
 	cub->we_ptr = mlx_xpm_file_to_image(cub->mlx, cub->we,
 			&cub->tex_size.we_width, &cub->tex_size.we_height);
-	cub->speed = 12;
+	cub->speed = 10;
 }

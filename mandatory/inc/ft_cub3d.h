@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/19 13:30:57 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:41:43 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ typedef struct s_player
 	int			dir_vec;
 	int			rotaion_speed;
 	double		dir;
-	int			end_xline;
-	int			end_yline;
 }				t_player;
 
 typedef struct s_data
@@ -110,10 +108,10 @@ typedef struct s_cub
 	double		dis_proj_plan;
 	double		dis_v;
 	double		dis_h;
-	int	x_offset;
-	int	y_offset;
-	int	speed;
-	t_tex_size tex_size;
+	int			x_offset;
+	int			y_offset;
+	int			speed;
+	t_tex_size	tex_size;
 	t_player	ply;
 	t_data		data;
 }				t_cub;
@@ -127,7 +125,6 @@ char			**ft_copy_map_to_rectangle_map(char **map);
 /* --------- raycasting prototype ------------*/
 
 void			view_of_player(t_cub *cub, int key);
-void			update_cord_endline(t_cub *cub);
 void			rays(t_cub *cub);
 int				ray_casting(t_cub *cub);
 int				ray_cast_ver(t_cub *cub);
@@ -140,15 +137,11 @@ void			init_point_inter_hor(t_cub *cub);
 void			floor_ceil(t_cub *cub);
 void			find_first_ray(t_cub *cub);
 int				event_handler(int key, t_cub *cub);
-void			drawing(t_cub *cub, int sx, int sy, int x, int y, int color);
 void			draw_wal(t_cub *cub, char flag, int x, int WALL_TEXTR);
-void			draw_rectangle(t_cub *cub, int color, int sy, int sx);
-void			draw_player(t_cub *cub, int color);
-void			draw_line(t_cub *cub, int x, int y, int color);
 double			deg_to_rad(double deg);
 double			rad_to_deg(double rad);
 void			init_str(t_cub *cub);
-int	x_size(t_cub *cub);
-int	y_size(t_cub *cub);
+int				x_size(t_cub *cub);
+int				y_size(t_cub *cub);
 
 #endif

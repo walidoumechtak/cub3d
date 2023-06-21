@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:32:59 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/11 13:23:53 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:50:06 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,4 @@ void	view_of_player(t_cub *cub, int key)
 		if (cub->ply.dir > 2 * M_PI)
 			cub->ply.dir = 0;
 	}
-	cub->ply.end_xline = 63 + (cos(cub->ply.dir) * (25));
-	cub->ply.end_yline = 63 + (sin(cub->ply.dir) * (25));
 }

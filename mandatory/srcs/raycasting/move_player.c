@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:15:07 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/18 11:45:50 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 10:49:56 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,4 @@ void	move_player(t_cub *cub, double rot)
 		return ;
 	cub->ply.pixel_x = x;
 	cub->ply.pixel_y = y;
-	cub->ply.end_xline = 63 + (cos(cub->ply.dir) * (25));
-	cub->ply.end_yline = 63 + (sin(cub->ply.dir) * (25));
 }

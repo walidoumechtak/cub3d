@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
+/*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:43:32 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/05/10 12:37:31by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:40:41 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	ft_check_data_of_map(t_cub *cub)
 
 int	ft_check_map(t_cub *cub, char *file_path)
 {
-
 	cub->map = get_map(file_path);
 	if (!cub->map)
 		return (EXIT_FAILURE);
