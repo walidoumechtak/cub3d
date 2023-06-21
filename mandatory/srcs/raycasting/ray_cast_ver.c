@@ -6,11 +6,24 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:10:03 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/19 14:42:38 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 11:46:34 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
+
+int	check_wall(t_cub *cub)
+{
+	if (cub->map[(int)(cub->pv_inter_y / CARRE)][(int)(cub->pv_inter_x
+			/ CARRE)] == '1')
+		return (1);
+	else
+	{
+		cub->pv_inter_x += (cub->dv_x_ray);
+		cub->pv_inter_y += (cub->dv_y_ray);
+	}
+	return (0);
+}
 
 int	ray_cast_ver(t_cub *cub)
 {
@@ -34,13 +47,7 @@ int	ray_cast_ver(t_cub *cub)
 	}
 	if (x == 1)
 		return (1);
-	if (cub->map[(int)(cub->pv_inter_y / CARRE)][(int)(cub->pv_inter_x
-			/ CARRE)] == '1')
+	if (check_wall(cub) == 1)
 		return (1);
-	else
-	{
-		cub->pv_inter_x += (cub->dv_x_ray);
-		cub->pv_inter_y += (cub->dv_y_ray);
-	}
 	return (0);
 }
