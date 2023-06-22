@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/22 11:40:01 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 21:33:09 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define CARRE 30
 # define WIDTH 1000
 # define HEIGHT 800
-# define R_VIEW 5
+# define R_VIEW 6
 # define MINI_SIZE 120
 
 typedef struct s_player
@@ -129,7 +129,8 @@ typedef struct s_cub
 	int				door_height;
 	int				view;
 	pthread_t		*th;
-	t_list *ths; 
+	t_list *ths;
+	int	friction;
 	t_player		ply;
 	t_data			data;
 }					t_cub;

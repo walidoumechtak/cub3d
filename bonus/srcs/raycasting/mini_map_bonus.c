@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_map.c                                         :+:      :+:    :+:   */
+/*   mini_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:16:02 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/20 11:45:39 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 21:44:46 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@ void	player_in_mini_map(t_cub *cub)
 		}
 		i++;
 	}
-	drawing(cub, (MINI_SIZE + 3) * 0.7, (MINI_SIZE + 3) * 0.7,
-			cub->ply.end_xline * 0.7, cub->ply.end_yline * 0.7, GOLD);
+	draw_line(cub, cub->ply.end_xline * 0.7, cub->ply.end_yline * 0.7, GOLD);
 }
+
+// void	cases_of_mini(t_cub *cub)
+// {
+	
+// }
 
 void	mini_map(t_cub *cub)
 {
@@ -61,7 +65,7 @@ void	mini_map(t_cub *cub)
 					|| cub->map[i / CARRE][j / CARRE] == 'E')
 				my_mlx_pixel_put(&cub->data, l * 0.7, k * 0.7, 0xFFFFFF);
 			else if (cub->map[i / CARRE][j / CARRE] == '2')
-				my_mlx_pixel_put(&cub->data,  l * 0.7, k * 0.7, GOLD);
+				my_mlx_pixel_put(&cub->data, l * 0.7, k * 0.7, GOLD);
 			j++;
 			l++;
 		}

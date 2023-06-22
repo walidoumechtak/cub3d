@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                      :+:      :+:    :+:   */
+/*   move_player_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:15:07 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/22 08:29:56 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 21:50:32 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
+
+void	re_draw(t_cub *cub)
+{
+	mlx_clear_window(cub->mlx, cub->mlx_win);
+	floor_ceil(cub);
+	rays(cub);
+	mini_map(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
+			- 250, HEIGHT - 281);
+	build_msg(cub);
+}
 
 void	close_door(t_cub *cub)
 {
@@ -23,23 +35,20 @@ void	close_door(t_cub *cub)
 		j = 0;
 		while (cub->map[i][j])
 		{
-			if (cub->map[i][j] == '3' && cub->map[(int)cub->ply.pixel_y / CARRE][(int)cub->ply.pixel_x / CARRE] != '3'
-				 && cub->map[(int)(cub->ply.pixel_y + (sin(cub->ply.dir) * CARRE)) / CARRE][(int)(cub->ply.pixel_x + (cos(cub->ply.dir) * CARRE)) / CARRE] != '3')
+			if (cub->map[i][j] == '3' && cub->map[(int)cub->ply.pixel_y
+				/ CARRE][(int)cub->ply.pixel_x / CARRE] != '3'
+				&& cub->map[(int)(cub->ply.pixel_y + (sin(cub->ply.dir)
+						* CARRE)) / CARRE][(int)(cub->ply.pixel_x
+					+ (cos(cub->ply.dir) * CARRE)) / CARRE] != '3')
 				cub->map[i][j] = '2';
 			j++;
 		}
 		i++;
 	}
-	mlx_clear_window(cub->mlx, cub->mlx_win);
-	floor_ceil(cub);
-    rays(cub);
-    mini_map(cub);
-    mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-    mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2 - 250, HEIGHT - 281);
-    build_msg(cub);
+	re_draw(cub);
 }
 
-int	check_other_side(t_cub *cub, int x, int y)
+int	check_other_side(t_cub *cub, double x, double y)
 {
 	double	eng;
 	double	incr;
@@ -55,21 +64,19 @@ int	check_other_side(t_cub *cub, int x, int y)
 		if (cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == '1'
 			|| cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == ' '
 			|| cub->map[(int)(y + i) / CARRE][(int)(x + j) / CARRE] == '2')
+		{
 			return (1);
+		}
 		eng += incr;
 	}
 	return (0);
 }
 
-void	move_player(t_cub *cub, double rot)
+void	move_player_loop(t_cub *cub, int x, int y, int rot)
 {
-	double	x;
-	double	y;
-	int		i;
+	int	i;
 
 	i = 0;
-	y = (cub->ply.pixel_y + (sin(cub->ply.dir + rot)));
-	x = (cub->ply.pixel_x + (cos(cub->ply.dir + rot)));
 	while (i < cub->speed)
 	{
 		x += ((cos(cub->ply.dir + rot)) * cub->ply.dir_vec);
@@ -78,19 +85,32 @@ void	move_player(t_cub *cub, double rot)
 			|| cub->map[((int)y) / CARRE][((int)x) / CARRE] == ' '
 			|| cub->map[((int)y) / CARRE][((int)x) / CARRE] == '2')
 		{
-			// if ((cub->ply.dir >= deg_to_rad(240) && cub->ply.dir <= deg_to_rad(300))
-			// 	|| (cub->ply.dir >= deg_to_rad(60) && cub->ply.dir <= deg_to_rad(120)))
-			// 	cub->ply.pixel_x += cos(cub->ply.dir);
-			// else if ((cub->ply.dir >= deg_to_rad(150) && cub->ply.dir <= deg_to_rad(210))
-			// 	|| (cub->ply.dir >= deg_to_rad(330) && cub->ply.dir <= deg_to_rad(30)))
-			// 	cub->ply.pixel_y += sin(cub->ply.dir);
-			//cub->is_wall = 1;
+			if (cub->friction == 1)
+				cub->ply.pixel_x += cos(cub->ply.dir);
+			else if (cub->friction == 2)
+				cub->ply.pixel_y += sin(cub->ply.dir);
 			return ;
 		}
 		i++;
 	}
+}
+
+void	move_player(t_cub *cub, double rot)
+{
+	double	x;
+	double	y;
+	
+	y = (cub->ply.pixel_y + (sin(cub->ply.dir + rot)));
+	x = (cub->ply.pixel_x + (cos(cub->ply.dir + rot)));
+	move_player_loop(cub, x, y, rot);
 	if (check_other_side(cub, x, y) == 1)
+	{
+		if (cub->friction == 1)
+			cub->ply.pixel_x += cos(cub->ply.dir);
+		else if (cub->friction == 2)
+			cub->ply.pixel_y += sin(cub->ply.dir);
 		return ;
+	}
 	close_door(cub);
 	cub->ply.pixel_x = x;
 	cub->ply.pixel_y = y;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rays.c                                             :+:      :+:    :+:   */
+/*   rays_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:03:12 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/20 18:52:13 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:49:14 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void    rays(t_cub *cub)
             check_ray = ray_casting(cub);
             if (check_ray == 100) // V
             {
+                if (cub->ray_dir == cub->ply.dir)
+                    cub->friction = 2;
                 if (cub->ray_dir >= deg_to_rad(90) && cub->ray_dir <= deg_to_rad(270))
                     draw_wal(cub, 'V', xxx, 'L');
                 else
@@ -35,6 +37,8 @@ void    rays(t_cub *cub)
             }
             else if (check_ray == 200) // H
             {
+                if (cub->ray_dir == cub->ply.dir)
+                    cub->friction = 1;
                 if (cub->ray_dir >= deg_to_rad(180) && cub->ray_dir <= deg_to_rad(360))
                     draw_wal(cub, 'H', xxx, 'T');
                 else

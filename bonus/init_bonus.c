@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/22 11:51:41 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 15:40:50 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,6 @@ void	init_str(t_cub *cub)
 	cub->x_midle_ray = -1;
 	cub->y_midle_ray = -1;
 	cub->th = NULL;
+	cub->friction = 0;
 	//cub->ths = malloc(sizeof(t_list));
 }
