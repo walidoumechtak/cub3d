@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:04:16 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/20 18:53:11 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 08:07:35 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void    draw_wal(t_cub *cub, char flag, int x, int WALL_TEXTR)
     if (flag == 'H')
     {
         rest = (cub->ph_inter_x / CARRE) - (int)(cub->ph_inter_x / CARRE);
-        
         cub->dis_h = fabs(cos(fabs(cub->ray_dir - cub->ply.dir)) * (cub->dis_h));
         wall_height = ((CARRE / cub->dis_h) * cub->dis_proj_plan);
         start_wall = ((HEIGHT / 2) - (wall_height / 2));

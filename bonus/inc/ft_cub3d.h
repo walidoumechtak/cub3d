@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/20 12:43:18 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:40:01 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@
 
 typedef struct s_player
 {
-	double FOV;   // filed of view
-	double P_FOV; // filed of view
-	double N_FOV; // filed of view
 	int				xp;
 	int				yp;
 	double			pixel_x;
@@ -127,14 +124,18 @@ typedef struct s_cub
 	int				flag_terminated;
 	double			x_midle_ray;
 	double			y_midle_ray;
-	void	*door;
-	int	door_width;
-	int	door_height;
+	void			*door;
+	int				door_width;
+	int				door_height;
+	int				view;
+	pthread_t		*th;
+	t_list *ths; 
 	t_player		ply;
 	t_data			data;
 }					t_cub;
 
 /* Parssing Functions Prototypes */
+
 int					ft_check_map(t_cub *cub, char *file_path);
 char				**get_map(char *file_path);
 int					ft_check_map_wall(t_cub *cub);
@@ -171,5 +172,6 @@ int					y_size(t_cub *cub);
 void				build_msg(t_cub *cub);
 double				calcdistance(t_cub *cub, double x, double y);
 void				open_dor(t_cub *cub);
+void    kill_thread(t_cub *cub);
 
 #endif

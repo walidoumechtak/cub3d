@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/20 15:23:51 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:40:20 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
 
-int	exit_mouse(int key)
+int	exit_mouse(int key, t_cub *cub)
 {
 	(void)key;
+	kill_thread(cub);
+	//pthread_detach(cub->th);
 	exit(0);
 }
 
@@ -55,8 +57,8 @@ void	build_msg(t_cub *cub)
 
 int	anim(t_cub *cub)
 {
-	int inc;
-	
+	int	inc;
+
 	inc = 0;
 	pthread_mutex_lock(&cub->mut);
 	inc = cub->guns_inc;
@@ -70,14 +72,15 @@ int	anim(t_cub *cub)
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
 		build_msg(cub);
 		pthread_mutex_lock(&cub->mut);
-		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[inc], WIDTH / 2 - 250, HEIGHT - 281);
+		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[inc],
+				WIDTH / 2 - 250, HEIGHT - 281);
 		inc = cub->guns_inc;
 		pthread_mutex_unlock(&cub->mut);
 	}
 	return (0);
 }
 
-int change_view(int button, int x, int y, t_cub *cub)
+int	change_view_mouse(int button, int x, int y, t_cub *cub)
 {
 	(void)y;
 	(void)x;
@@ -99,22 +102,23 @@ int change_view(int button, int x, int y, t_cub *cub)
 	cub->ply.end_yline = MINI_SIZE + 3 + (sin(cub->ply.dir) * (25));
 	mlx_clear_window(cub->mlx, cub->mlx_win);
 	floor_ceil(cub);
-    rays(cub);
-    mini_map(cub);
-    mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-    mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2 - 250, HEIGHT - 281);
-    build_msg(cub);
+	rays(cub);
+	mini_map(cub);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
+			- 250, HEIGHT - 281);
+	build_msg(cub);
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_cub	*cub;
-	
+
 	cub = malloc(sizeof(t_cub));
 	pthread_mutex_init(&cub->mut, NULL);
 	pthread_mutex_init(&cub->mut2, NULL);
-    //pthread_mutex_destroy(&var);
+	//pthread_mutex_destroy(&var);
 	if (ft_check_arg(ac, av))
 		return (ft_putstr_fd("Error\nWrong arguments\n", 2), EXIT_FAILURE);
 	if (ft_check_map(cub, av[1]))
@@ -125,17 +129,19 @@ int	main(int ac, char **av)
 	cub->data.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->data.addr = mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel,
 			&cub->data.line_length, &cub->data.endian);
-	cub->gun = mlx_xpm_file_to_image(cub->mlx, "textures/gun/4.xpm", &cub->size_gun, &cub->size_gun);
+	cub->gun = mlx_xpm_file_to_image(cub->mlx, "textures/gun/4.xpm",
+			&cub->size_gun, &cub->size_gun);
 	floor_ceil(cub);
 	mini_map(cub);
 	rays(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2 - 250, HEIGHT - 281);
+	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
+			- 250, HEIGHT - 281);
 	build_msg(cub);
 	mlx_loop_hook(cub->mlx, &anim, cub);
 	mlx_hook(cub->mlx_win, 2, 0, event_handler, cub);
 	mlx_hook(cub->mlx_win, 17, 0, exit_mouse, cub);
-	mlx_hook(cub->mlx_win, 4, 0, change_view, cub);
+	mlx_hook(cub->mlx_win, 4, 0, change_view_mouse, cub);
 	//pthread_mutex_destroy(&cub->mut);
 	mlx_loop(cub->mlx);
 }

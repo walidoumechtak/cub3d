@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:15:07 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/20 19:00:36 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/22 08:29:56 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	move_player(t_cub *cub, double rot)
 	int		i;
 
 	i = 0;
-	y = (cub->ply.pixel_y + (sin(cub->ply.dir + rot)) * cub->ply.dir_vec);
-	x = (cub->ply.pixel_x + (cos(cub->ply.dir + rot)) * cub->ply.dir_vec);
+	y = (cub->ply.pixel_y + (sin(cub->ply.dir + rot)));
+	x = (cub->ply.pixel_x + (cos(cub->ply.dir + rot)));
 	while (i < cub->speed)
 	{
 		x += ((cos(cub->ply.dir + rot)) * cub->ply.dir_vec);
@@ -84,7 +84,7 @@ void	move_player(t_cub *cub, double rot)
 			// else if ((cub->ply.dir >= deg_to_rad(150) && cub->ply.dir <= deg_to_rad(210))
 			// 	|| (cub->ply.dir >= deg_to_rad(330) && cub->ply.dir <= deg_to_rad(30)))
 			// 	cub->ply.pixel_y += sin(cub->ply.dir);
-			cub->is_wall = 1;
+			//cub->is_wall = 1;
 			return ;
 		}
 		i++;
