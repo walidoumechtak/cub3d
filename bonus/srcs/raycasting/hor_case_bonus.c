@@ -6,13 +6,13 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:45:52 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 12:39:52 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:42:53 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
 
-void	top_case(t_cub *cub, double rest)
+void	top_case(t_cub *cub, double rest, t_tex_data tex_data, int x)
 {
 	if (cub->map[(int)cub->ph_inter_y / CARRE][(int)cub->ph_inter_x
 		/ CARRE] == '2')
@@ -29,7 +29,7 @@ void	top_case(t_cub *cub, double rest)
 	}
 }
 
-void	bottom_case(t_cub *cub, double rest)
+void	bottom_case(t_cub *cub, double rest, t_tex_data tex_data, int x)
 {
 	if (cub->map[(int)cub->ph_inter_y / CARRE][(int)cub->ph_inter_x
 		/ CARRE] == '2')
@@ -55,7 +55,7 @@ void	hor_case(t_cub *cub, int WALL_TEXTR, int x, t_tex_data tex_data)
 	tex_data.wall_height = ((CARRE / cub->dis_h) * cub->dis_proj_plan);
 	tex_data.start_wall = ((HEIGHT / 2) - (tex_data.wall_height / 2));
 	if (WALL_TEXTR == 'T')
-		top_case(cub, rest);
+		top_case(cub, rest, tex_data, x);
 	else
-		bottom_case(cub, rest);
+		bottom_case(cub, rest, tex_data, x);
 }

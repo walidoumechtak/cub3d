@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 09:15:02 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:22:10 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	init_textures(t_cub *cub)
 			&cub->tex_size.so_width, &cub->tex_size.so_height);
 	cub->we_ptr = mlx_xpm_file_to_image(cub->mlx, cub->we,
 			&cub->tex_size.we_width, &cub->tex_size.we_height);
-	cub->door = mlx_xpm_file_to_image(cub->mlx, "textures/exit.xpm",
+	cub->door = mlx_xpm_file_to_image(cub->mlx, "textures/door.xpm",
 			&cub->door_width, &cub->door_height);
 }
 

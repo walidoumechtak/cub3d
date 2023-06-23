@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/22 11:40:20 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 14:24:31 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	exit_mouse(int key, t_cub *cub)
 {
 	(void)key;
 	kill_thread(cub);
-	//pthread_detach(cub->th);
 	exit(0);
 }
 
@@ -118,7 +117,6 @@ int	main(int ac, char **av)
 	cub = malloc(sizeof(t_cub));
 	pthread_mutex_init(&cub->mut, NULL);
 	pthread_mutex_init(&cub->mut2, NULL);
-	//pthread_mutex_destroy(&var);
 	if (ft_check_arg(ac, av))
 		return (ft_putstr_fd("Error\nWrong arguments\n", 2), EXIT_FAILURE);
 	if (ft_check_map(cub, av[1]))
@@ -129,8 +127,6 @@ int	main(int ac, char **av)
 	cub->data.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->data.addr = mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel,
 			&cub->data.line_length, &cub->data.endian);
-	cub->gun = mlx_xpm_file_to_image(cub->mlx, "textures/gun/4.xpm",
-			&cub->size_gun, &cub->size_gun);
 	floor_ceil(cub);
 	mini_map(cub);
 	rays(cub);
@@ -142,6 +138,5 @@ int	main(int ac, char **av)
 	mlx_hook(cub->mlx_win, 2, 0, event_handler, cub);
 	mlx_hook(cub->mlx_win, 17, 0, exit_mouse, cub);
 	mlx_hook(cub->mlx_win, 4, 0, change_view_mouse, cub);
-	//pthread_mutex_destroy(&cub->mut);
 	mlx_loop(cub->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:15:07 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 11:15:55 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:31:51 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	check_other_side(t_cub *cub, double x, double y)
 	return (0);
 }
 
-void	move_player_loop(t_cub *cub, double *x, double *y, int rot)
+void	move_player_loop(t_cub *cub, double *x, double *y, double rot)
 {
 	int	i;
 

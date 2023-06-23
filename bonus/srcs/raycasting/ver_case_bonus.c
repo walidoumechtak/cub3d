@@ -6,13 +6,13 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 11:47:35 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 12:56:56 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 15:44:49 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
 
-void	right_case(t_cut *cub, double rest)
+void	right_case(t_cub *cub, double rest, t_tex_data tex_data, int x)
 {
 	if (cub->map[(int)cub->pv_inter_y / CARRE][(int)cub->pv_inter_x
 		/ CARRE] == '2')
@@ -29,7 +29,7 @@ void	right_case(t_cut *cub, double rest)
 	}
 }
 
-void	left_case(t_cut *cub, double rest)
+void	left_case(t_cub *cub, double rest, t_tex_data tex_data, int x)
 {
 	if (cub->map[(int)cub->pv_inter_y / CARRE][(int)cub->pv_inter_x
 		/ CARRE] == '2')
@@ -55,7 +55,7 @@ void	ver_case(t_cub *cub, int WALL_TEXTR, int x, t_tex_data tex_data)
 	tex_data.wall_height = ((CARRE / cub->dis_v) * cub->dis_proj_plan);
 	tex_data.start_wall = ((HEIGHT / 2) - (tex_data.wall_height / 2));
 	if (WALL_TEXTR == 'R')
-		right_case(cub, rest);
+		right_case(cub, rest, tex_data, x);
 	else if (WALL_TEXTR == 'L')
-		left_case(cub, rest);
+		left_case(cub, rest, tex_data, x);
 }

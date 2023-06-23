@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 12:55:45 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 14:23:18 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,6 @@ void				init_point_inter_hor(t_cub *cub);
 void				floor_ceil(t_cub *cub);
 void				find_first_ray(t_cub *cub);
 int					event_handler(int key, t_cub *cub);
-void				drawing(t_cub *cub, int sx, int sy, int x, int y,
-						int color);
 void				draw_wal(t_cub *cub, char flag, int x, int WALL_TEXTR);
 void				draw_rectangle(t_cub *cub, int color, int sy, int sx);
 void				draw_player(t_cub *cub, int color);
