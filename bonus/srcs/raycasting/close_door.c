@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:59:09 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 11:10:42 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:52:08 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	re_draw(t_cub *cub)
 	mini_map(cub);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
 	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
-			- 250, HEIGHT - 281);
+		- 250, HEIGHT - 281);
 	build_msg(cub);
 }
 

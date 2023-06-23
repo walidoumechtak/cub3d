@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 10:59:44 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:48:32 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,14 @@ typedef struct s_tex_size
 	int				ea_height;
 }					t_tex_size;
 
+typedef struct s_textures_data
+{
+	int				wall_height;
+	double			start_wall;
+	int				col;
+	void			*tx_ptr;
+	int				text_height;
+}					t_tex_data;
 typedef struct s_cub
 {
 	char			**map;
@@ -177,6 +185,10 @@ void				open_dor(t_cub *cub);
 void				kill_thread(t_cub *cub);
 void				*animation_inc(void *arg);
 void				controlle_speed(t_cub *cub, int key);
-void	close_door(t_cub *cub);
+void				close_door(t_cub *cub);
+void				hor_case(t_cub *cub, int WALL_TEXTR, int x,
+						t_tex_data tex_data);
+void				ver_case(t_cub *cub, int WALL_TEXTR, int x,
+						t_tex_data tex_data);
 
 #endif
