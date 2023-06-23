@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 14:24:31 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:57:18 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,7 @@ int	anim(t_cub *cub)
 	pthread_mutex_unlock(&cub->mut);
 	if (inc < 12 && inc != 1)
 	{
-		mlx_clear_window(cub->mlx, cub->mlx_win);
-		floor_ceil(cub);
-		rays(cub);
-		mini_map(cub);
-		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-		build_msg(cub);
+		re_render_images(cub);
 		pthread_mutex_lock(&cub->mut);
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[inc],
 				WIDTH / 2 - 250, HEIGHT - 281);
@@ -99,14 +94,7 @@ int	change_view_mouse(int button, int x, int y, t_cub *cub)
 		open_dor(cub);
 	cub->ply.end_xline = MINI_SIZE + 3 + (cos(cub->ply.dir) * (25));
 	cub->ply.end_yline = MINI_SIZE + 3 + (sin(cub->ply.dir) * (25));
-	mlx_clear_window(cub->mlx, cub->mlx_win);
-	floor_ceil(cub);
-	rays(cub);
-	mini_map(cub);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
-			- 250, HEIGHT - 281);
-	build_msg(cub);
+	re_render_images(cub);
 	return (0);
 }
 
@@ -127,13 +115,7 @@ int	main(int ac, char **av)
 	cub->data.img = mlx_new_image(cub->mlx, WIDTH, HEIGHT);
 	cub->data.addr = mlx_get_data_addr(cub->data.img, &cub->data.bits_per_pixel,
 			&cub->data.line_length, &cub->data.endian);
-	floor_ceil(cub);
-	mini_map(cub);
-	rays(cub);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
-			- 250, HEIGHT - 281);
-	build_msg(cub);
+	re_render_images(cub);
 	mlx_loop_hook(cub->mlx, &anim, cub);
 	mlx_hook(cub->mlx_win, 2, 0, event_handler, cub);
 	mlx_hook(cub->mlx_win, 17, 0, exit_mouse, cub);

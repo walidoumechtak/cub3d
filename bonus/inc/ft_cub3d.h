@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 14:23:18 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:52:08 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,5 +190,6 @@ void				ver_case(t_cub *cub, int WALL_TEXTR, int x,
 						t_tex_data tex_data);
 void				draw_textures(t_cub *cub, int col, int tex_height,
 						t_tex_data tex_data);
+void				re_render_images(t_cub *cub);
 
 #endif

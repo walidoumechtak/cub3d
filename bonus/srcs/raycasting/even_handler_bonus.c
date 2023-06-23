@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:02:04 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 10:31:58 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:51:49 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,7 @@ void	init_event(t_cub *cub, int key, int *contr)
 	cub->key = key;
 }
 
-void	re_render_images(t_cub *cub)
-{
-	mlx_clear_window(cub->mlx, cub->mlx_win);
-	floor_ceil(cub);
-	rays(cub);
-	mini_map(cub);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
-	mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[0], WIDTH / 2
-		- 250, HEIGHT - 281);
-	build_msg(cub);
-}
+
 
 int	event_handler(int key, t_cub *cub)
 {

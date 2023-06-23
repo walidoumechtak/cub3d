@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 15:22:10 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 16:47:03 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	fill_guns_array(t_cub *cub)
 	{
 		c = ft_itoa(i);
 		temp = ft_strjoin(c, ".xpm");
+		free(c);
 		file_name = ft_strjoin("textures/gun/", temp);
 		free(temp);
 		cub->guns_arr[j] = mlx_xpm_file_to_image(cub->mlx, file_name,
