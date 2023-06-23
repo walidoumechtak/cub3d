@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 16:57:18 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:51:19 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,6 @@ int	ft_check_arg(int ac, char **av)
 	return (EXIT_SUCCESS);
 }
 
-void	build_msg(t_cub *cub)
-{
-	char	*speed;
-
-	speed = ft_itoa(cub->speed);
-	cub->msg = ft_strjoin("Speed: ", speed);
-	free(speed);
-	if (cub->speed > 22)
-		mlx_string_put(cub->mlx, cub->mlx_win, WIDTH - 140, 20, ORANGE,
-				cub->msg);
-	else
-		mlx_string_put(cub->mlx, cub->mlx_win, WIDTH - 140, 20, 0xFFFFFF,
-				cub->msg);
-	free(cub->msg);
-}
-
 int	anim(t_cub *cub)
 {
 	int	inc;
@@ -67,7 +51,7 @@ int	anim(t_cub *cub)
 		re_render_images(cub);
 		pthread_mutex_lock(&cub->mut);
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[inc],
-				WIDTH / 2 - 250, HEIGHT - 281);
+			WIDTH / 2 - 250, HEIGHT - 281);
 		inc = cub->guns_inc;
 		pthread_mutex_unlock(&cub->mut);
 	}

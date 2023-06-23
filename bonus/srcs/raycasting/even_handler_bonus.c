@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:02:04 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 16:51:49 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 17:50:37 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ void	init_event(t_cub *cub, int key, int *contr)
 	pthread_mutex_unlock(&cub->mut2);
 	cub->key = key;
 }
-
-
 
 int	event_handler(int key, t_cub *cub)
 {
