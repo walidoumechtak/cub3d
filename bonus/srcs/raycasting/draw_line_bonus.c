@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:37:26 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/22 21:41:28 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 11:27:49 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	draw_line(t_cub *cub, int x, int y, int color)
 {
-	double		dx;
-	double		dy;
+	double	dx;
+	double	dy;
 	int		steps;
-	double	xIncrement;
-	double	yIncrement;
+	double	x_inc;
+	double	y_inc;
 
 	dx = x - (int)((MINI_SIZE + 3) * 0.7);
 	dy = y - (int)((MINI_SIZE + 3) * 0.7);
@@ -26,15 +26,15 @@ void	draw_line(t_cub *cub, int x, int y, int color)
 		steps = fabs(dx);
 	else
 		steps = fabs(dy);
-	xIncrement = dx / steps;
-	yIncrement = dy / steps;
+	x_inc = dx / steps;
+	y_inc = dy / steps;
 	dx = (int)((MINI_SIZE + 3) * 0.7);
 	dy = (int)((MINI_SIZE + 3) * 0.7);
 	while (steps >= 0)
 	{
 		my_mlx_pixel_put(&cub->data, (int)((dx)), (int)((dy)), color);
-		dx += xIncrement;
-		dy += yIncrement;
+		dx += x_inc;
+		dy += y_inc;
 		steps--;
 	}
 }

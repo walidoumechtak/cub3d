@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/22 21:33:09 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 10:59:44 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,8 +129,9 @@ typedef struct s_cub
 	int				door_height;
 	int				view;
 	pthread_t		*th;
-	t_list *ths;
-	int	friction;
+	t_list			*ths;
+	int				friction;
+	int				key;
 	t_player		ply;
 	t_data			data;
 }					t_cub;
@@ -173,6 +174,9 @@ int					y_size(t_cub *cub);
 void				build_msg(t_cub *cub);
 double				calcdistance(t_cub *cub, double x, double y);
 void				open_dor(t_cub *cub);
-void    kill_thread(t_cub *cub);
+void				kill_thread(t_cub *cub);
+void				*animation_inc(void *arg);
+void				controlle_speed(t_cub *cub, int key);
+void	close_door(t_cub *cub);
 
 #endif

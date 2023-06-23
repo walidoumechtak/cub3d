@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   update_cord.c                                      :+:      :+:    :+:   */
+/*   controlle_speed.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 11:34:04 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/07 11:34:22 by woumecht         ###   ########.fr       */
+/*   Created: 2023/06/23 10:19:33 by woumecht          #+#    #+#             */
+/*   Updated: 2023/06/23 10:19:59 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
 
-void	update_cord_endline(t_cub *cub)
+void	controlle_speed(t_cub *cub, int key)
 {
-	int	x;
-	int	y;
-
-	x = cub->ply.xp;
-	y = cub->ply.yp;
-	if (cub->map[y][x] == 'N')
+	if (key == 69)
 	{
-		cub->ply.end_xline = cub->ply.pixel_x;
-		cub->ply.end_yline = cub->ply.pixel_y - CARRE;
-		// cub->ply.end_xline = cub->ply.pixel_x + CARRE;
-		// cub->ply.end_yline = cub->ply.pixel_y;
+		if (cub->speed == 25)
+			printf("You are in the heigher speed !!!");
+		else
+			cub->speed++;
+	}
+	else
+	{
+		if (cub->speed == 5)
+			printf("You are in the lower speed !!!\n");
+		else
+			cub->speed--;
 	}
 }
