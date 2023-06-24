@@ -6,11 +6,11 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 11:10:19 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/24 11:09:17 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:26:39 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
+#include "ft_cub3d_bonus.h"
 
 void	kill_thread(t_cub *cub)
 {

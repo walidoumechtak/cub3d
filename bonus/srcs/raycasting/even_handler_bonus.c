@@ -6,11 +6,11 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:02:04 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/24 11:05:55 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:26:43 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
+#include "ft_cub3d_bonus.h"
 
 void	view(t_cub *cub)
 {

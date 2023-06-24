@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_copy_map_to_rectangle_map.c                     :+:      :+:    :+:   */
+/*   ft_copy_map_to_rectangle_map_bonus.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 15:42:26 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/05/11 15:49:23benfadd         ###   ########.fr       */
+/*   Created: 2023/06/23 20:02:34 by hbenfadd          #+#    #+#             */
+/*   Updated: 2023/06/23 20:30:21 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
+#include "ft_cub3d_bonus.h"
 
 static int	get_max_width(char **map)
 {

@@ -6,11 +6,11 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 10:17:19 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/24 07:59:50 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:28:13 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
+#include "ft_cub3d_bonus.h"
 
 void	*animation_inc(void *arg)
 {

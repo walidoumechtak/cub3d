@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:43:32 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/21 11:40:41 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:38:53 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,39 @@ int	ft_check_map_char(char **map)
 
 	i = 0;
 	j = 0;
-	while (map && map[i])
+	while (map && map[i] && i < 6)
 		i++;
 	if (i < 5)
 		return (0);
 	while (map[i])
 	{
+		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != '2'
+			if (map[i][j] != '0' && map[i][j] != '1'
 			&& map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E'
 			&& map[i][j] != 'W' && map[i][j] != ' ')
 				return (0);
 			j++;
 		}
 		i++;
-		j = 0;
 	}
 	return (1);
 }
 
 void	ft_set_data(t_cub *cub, int i, int j)
 {
-	if (cub->map[i][j] == 'N' && cub->map[i][j + 1] == 'O')
+	if (cub->map[i][j] == 'N' && cub->map[i][j + 1] == 'O'
+		&& cub->map[i][j + 2] == ' ')
 		cub->no = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'S' && cub->map[i][j + 1] == 'O')
+	else if (cub->map[i][j] == 'S' && cub->map[i][j + 1] == 'O'
+			&& cub->map[i][j + 2] == ' ')
 		cub->so = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'W' && cub->map[i][j + 1] == 'E')
+	else if (cub->map[i][j] == 'W' && cub->map[i][j + 1] == 'E'
+			&& cub->map[i][j + 2] == ' ')
 		cub->we = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'E' && cub->map[i][j + 1] == 'A')
+	else if (cub->map[i][j] == 'E' && cub->map[i][j + 1] == 'A'
+		&& cub->map[i][j + 2] == ' ')
 		cub->ea = ft_strdup(&cub->map[i][j + 3]);
 	else if (cub->map[i][j] == 'F' && cub->map[i][j + 1] == ' ')
 		cub->f = ft_split(&cub->map[i][j + 2], ',');
@@ -100,6 +104,12 @@ int	ft_check_data_of_map(t_cub *cub)
 
 int	ft_check_map(t_cub *cub, char *file_path)
 {
+	cub->no = NULL;
+	cub->so = NULL;
+	cub->we = NULL;
+	cub->ea = NULL;
+	cub->f = NULL;
+	cub->c = NULL;
 	cub->map = get_map(file_path);
 	if (!cub->map)
 		return (EXIT_FAILURE);

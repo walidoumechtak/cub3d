@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_point_hor.c                                   :+:      :+:    :+:   */
+/*   init_point_hor_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:13:01 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/07 11:13:40 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/23 20:30:21 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
+#include "ft_cub3d_bonus.h"
 
 void	init_point_inter_hor(t_cub *cub)
 {

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cub3d.h                                         :+:      :+:    :+:   */
+/*   ft_cub3d_bonus.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 07:56:56 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:30:00 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CUB3D_H
-# define FT_CUB3D_H
+#ifndef FT_CUB3D_BONUS_H
+# define FT_CUB3D_BONUS_H
 
 # include "../libft/inc/libft.h"
 # include "mlx.h"
@@ -150,6 +150,7 @@ int					ft_check_map(t_cub *cub, char *file_path);
 char				**get_map(char *file_path);
 int					ft_check_map_wall(t_cub *cub);
 char				**ft_copy_map_to_rectangle_map(char **map);
+void				free_map(char **map);
 
 /* --------- raycasting prototype ------------*/
 

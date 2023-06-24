@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:36:52 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/21 11:37:47 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 10:15:36 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ char	**get_map(char *file_path)
 
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
-		return (ft_putstr_fd("Error\nFailed to open file\n", 2), NULL);
+		return (ft_putstr_fd("Error\nFailed to open file\n", 2), exit(1), NULL);
 	tmp = read_map(fd);
 	if (!tmp)
 		return (NULL);
