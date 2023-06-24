@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/21 10:49:03 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:05:22 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ void	starting_player(t_cub *cub)
 void	init_str(t_cub *cub)
 {
 	get_player_cord(cub);
-	cub->ply.pixel_x = cub->ply.xp * CARRE;
-	cub->ply.pixel_y = cub->ply.yp * CARRE;
+	starting_player(cub);
+	cub->ply.pixel_x = cub->ply.xp * CARRE + 10;
+	cub->ply.pixel_y = cub->ply.yp * CARRE + 10;
 	cub->ply.move_speed = 3;
 	cub->ply.dir_vec = 0;
 	cub->is_wall = 0;
@@ -68,5 +69,10 @@ void	init_str(t_cub *cub)
 			&cub->tex_size.so_width, &cub->tex_size.so_height);
 	cub->we_ptr = mlx_xpm_file_to_image(cub->mlx, cub->we,
 			&cub->tex_size.we_width, &cub->tex_size.we_height);
+	if (!cub->no_ptr || !cub->ea_ptr || !cub->so_ptr || !cub->we_ptr)
+	{
+		ft_putendl_fd("Something wrong with your textures !!!", 2);
+		exit (1);
+	}
 	cub->speed = 10;
 }

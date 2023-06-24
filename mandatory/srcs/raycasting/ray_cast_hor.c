@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:10:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/21 11:44:59 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:35:02 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,24 @@ int	check_for_wall(t_cub *cub)
 	return (0);
 }
 
+int	check_y(t_cub *cub)
+{
+	int	flag;
+
+	flag = 0;
+	if (cub->ph_inter_y >= (y_size(cub) * CARRE - CARRE))
+	{
+		cub->ph_inter_y = y_size(cub) * CARRE - CARRE;
+		flag = 1;
+	}
+	if (cub->ph_inter_y <= 0)
+	{
+		cub->ph_inter_y = CARRE;
+		flag = 1;
+	}
+	return (flag);
+}
+
 int	ray_cast_hor(t_cub *cub)
 {
 	int	x;
@@ -40,12 +58,7 @@ int	ray_cast_hor(t_cub *cub)
 		cub->ph_inter_x = x_size(cub) * CARRE - CARRE;
 		x = 1;
 	}
-	if (cub->ph_inter_y >= (y_size(cub) * CARRE - CARRE))
-	{
-		cub->ph_inter_y = y_size(cub) * CARRE - CARRE;
-		return (1);
-	}
-	if (x == 1)
+	if (check_y(cub) || x == 1)
 		return (1);
 	if (check_for_wall(cub) == 1)
 		return (1);
