@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:43:32 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 10:19:45 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:16:33 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,23 @@ int	ft_check_map_char(char **map)
 
 void	ft_set_data(t_cub *cub, int i, int j)
 {
-	if (cub->map[i][j] == 'N' && cub->map[i][j + 1] == 'O')
-		cub->no = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'S' && cub->map[i][j + 1] == 'O')
-		cub->so = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'W' && cub->map[i][j + 1] == 'E')
-		cub->we = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'E' && cub->map[i][j + 1] == 'A')
-		cub->ea = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'F' && cub->map[i][j + 1] == ' ')
+	if (cub->map[i][j] == 'N' && cub->map[i][j + 1] == 'O'
+			&& cub->map[i][j + 2] == ' ')
+		cub->no = ft_strtrim(&cub->map[i][j + 2], " ");
+	else if (cub->map[i][j] == 'S' && cub->map[i][j + 1] == 'O'
+			&& cub->map[i][j + 2] == ' ')
+		cub->so = ft_strtrim(&cub->map[i][j + 2], " ");
+	else if (cub->map[i][j] == 'W' && cub->map[i][j + 1] == 'E'
+			&& cub->map[i][j + 2] == ' ')
+		cub->we = ft_strtrim(&cub->map[i][j + 2], " ");
+	else if (cub->map[i][j] == 'E' && cub->map[i][j + 1] == 'A'
+		&& cub->map[i][j + 2] == ' ')
+		cub->ea = ft_strtrim(&cub->map[i][j + 2], " ");
+	else if (cub->map[i][j] == 'F' && cub->map[i][j + 1] == ' '
+			&& ft_count_comma(cub->map[i]) == 2)
 		cub->f = ft_split(&cub->map[i][j + 2], ',');
-	else if (cub->map[i][j] == 'C' && cub->map[i][j + 1] == ' ')
+	else if (cub->map[i][j] == 'C' && cub->map[i][j + 1] == ' '
+			&& ft_count_comma(cub->map[i]) == 2)
 		cub->c = ft_split(&cub->map[i][j + 2], ',');
 }
 

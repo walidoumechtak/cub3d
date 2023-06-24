@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/23 20:32:03 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 20:32:05 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:06:36 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ char				**get_map(char *file_path);
 int					ft_check_map_wall(t_cub *cub);
 char				**ft_copy_map_to_rectangle_map(char **map);
 void				free_map(char **map);
+void				ft_clear_floor_ceiling(t_cub *cub);
+int					ft_count_comma(char *str);
 
 /* --------- raycasting prototype ------------*/
 

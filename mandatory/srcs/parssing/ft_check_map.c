@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:43:32 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 20:38:53 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:08:56 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,22 @@ int	ft_check_map_char(char **map)
 void	ft_set_data(t_cub *cub, int i, int j)
 {
 	if (cub->map[i][j] == 'N' && cub->map[i][j + 1] == 'O'
-		&& cub->map[i][j + 2] == ' ')
-		cub->no = ft_strdup(&cub->map[i][j + 3]);
+			&& cub->map[i][j + 2] == ' ')
+		cub->no = ft_strtrim(&cub->map[i][j + 2], " ");
 	else if (cub->map[i][j] == 'S' && cub->map[i][j + 1] == 'O'
 			&& cub->map[i][j + 2] == ' ')
-		cub->so = ft_strdup(&cub->map[i][j + 3]);
+		cub->so = ft_strtrim(&cub->map[i][j + 2], " ");
 	else if (cub->map[i][j] == 'W' && cub->map[i][j + 1] == 'E'
 			&& cub->map[i][j + 2] == ' ')
-		cub->we = ft_strdup(&cub->map[i][j + 3]);
+		cub->we = ft_strtrim(&cub->map[i][j + 2], " ");
 	else if (cub->map[i][j] == 'E' && cub->map[i][j + 1] == 'A'
 		&& cub->map[i][j + 2] == ' ')
-		cub->ea = ft_strdup(&cub->map[i][j + 3]);
-	else if (cub->map[i][j] == 'F' && cub->map[i][j + 1] == ' ')
+		cub->ea = ft_strtrim(&cub->map[i][j + 2], " ");
+	else if (cub->map[i][j] == 'F' && cub->map[i][j + 1] == ' '
+		&& ft_count_comma(cub->map[i]) == 2)
 		cub->f = ft_split(&cub->map[i][j + 2], ',');
-	else if (cub->map[i][j] == 'C' && cub->map[i][j + 1] == ' ')
+	else if (cub->map[i][j] == 'C' && cub->map[i][j + 1] == ' '
+		&& ft_count_comma(cub->map[i]) == 2)
 		cub->c = ft_split(&cub->map[i][j + 2], ',');
 }
 
@@ -78,9 +80,9 @@ int	ft_check_data_of_map(t_cub *cub)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = -1;
 	j = 0;
-	while (cub->map[i] && i < 6)
+	while (cub->map[++i] && i < 6)
 	{
 		if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
 			|| cub->map[i][j] == 'E' || cub->map[i][j] == 'W'
@@ -88,11 +90,11 @@ int	ft_check_data_of_map(t_cub *cub)
 			ft_set_data(cub, i, 0);
 		else
 			return (1);
-		i++;
 	}
 	if (!cub->no || !cub->so || !cub->we
-		|| !cub->ea || !cub->f || !cub->c)
+		|| !cub->ea || !cub->f || !cub->c || cub->c[3] || cub->f[3])
 		return (1);
+	ft_clear_floor_ceiling(cub);
 	if (ft_check_for_space(cub->no) || ft_check_for_space(cub->so)
 		|| ft_check_for_space(cub->we) || ft_check_for_space(cub->ea)
 		|| ft_check_for_space(cub->f[0]) || ft_check_for_space(cub->f[1])

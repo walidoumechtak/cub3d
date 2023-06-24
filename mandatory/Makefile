@@ -3,36 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+         #
+#    By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 12:04:27 by hbenfadd          #+#    #+#              #
-#    Updated: 2023/06/21 11:35:38 by woumecht         ###   ########.fr        #
+#    Updated: 2023/06/24 12:04:58 by hbenfadd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Cub3d
-UNAME_S := $(shell uname -s)
-CC			= cc
-CFLAGS		=  -Wall -Wextra -Werror -fsanitize=address
-LIBFT_DIR	= ./libft
-HEADER		= -I./inc -I./libft/inc  -I/usr/local/include 
-# Default for macOS
-CLIB		= -L./libft -lft -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit -lm 
-# Conditionally set CLIB for Linux
-ifeq ($(UNAME_S),Linux)
-	CLIB		= -L./libft -lft -L/usr/local/lib -lmlx -lXext -lX11 -lm
-endif
+NAME			= Cub3d
+CC				= cc
+CFLAGS			=  -Wall -Wextra -Werror -g -fsanitize=address
+LIBFT_DIR		= ./libft
+HEADER			= -I./inc -I./libft/inc  -I/usr/local/include 
+CLIB			= -L./libft -lft -L/usr/local/lib -lmlx -framework OpenGL -framework AppKit -lm 
 
-RM		= rm -rf
+RM				= rm -rf
 
 PARSSING_SRCS	= ft_check_map.c get_map.c ft_check_map_wall.c ft_copy_map_to_rectangle_map.c  \
+				  ft_clear_floor_ceiling.c ft_count_comma.c\
 
-RAYCAST = draw_wall.c even_handler.c find_first_ray.c \
-floor_ciel.c init_point_hor.c init_point_ver.c move_player.c movement.c my_mlx_pixel_put.c ray_cast_hor.c \
-ray_cast_ver.c ray_casting.c rays.c view_player.c angles_trans.c map_dim.c \
+RAYCAST_SRCS 	= draw_wall.c even_handler.c find_first_ray.c  floor_ciel.c init_point_hor.c \
+					init_point_ver.c move_player.c movement.c my_mlx_pixel_put.c ray_cast_hor.c \
+					ray_cast_ver.c ray_casting.c rays.c view_player.c angles_trans.c map_dim.c \
 
 SRCS = $(addprefix ./srcs/parssing/, $(PARSSING_SRCS)) \
-		$(addprefix ./srcs/raycasting/, $(RAYCAST)) \
+		$(addprefix ./srcs/raycasting/, $(RAYCAST_SRCS)) \
 		main.c init.c \
 
 OBJS = $(SRCS:%.c=%.o)
