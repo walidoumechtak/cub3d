@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:04:16 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/21 11:29:15 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/21 17:05:17 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,7 @@ void	draw_textures(t_cub *cub, int col, int tex_height, t_tex_data tex_data)
 	if (tex_data.wall_height >= HEIGHT)
 	{
 		s = (tex_data.wall_height / 2) - (HEIGHT / 2);
-		i = (((s * 100) / (tex_data.wall_height / 2)) / (100)) * (tex_height
-				/ 2);
+		i = ((s * 100 / (tex_data.wall_height)) / 100) * tex_height;
 	}
 	if (tex_data.start_wall < 0)
 		tex_data.start_wall = 0;
