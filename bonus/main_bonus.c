@@ -6,15 +6,14 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/23 17:51:19 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:09:02 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_cub3d.h"
 
-int	exit_mouse(int key, t_cub *cub)
+int	exit_mouse(t_cub *cub)
 {
-	(void)key;
 	kill_thread(cub);
 	exit(0);
 }
@@ -48,7 +47,12 @@ int	anim(t_cub *cub)
 	pthread_mutex_unlock(&cub->mut);
 	if (inc < 12 && inc != 1)
 	{
-		re_render_images(cub);
+		mlx_clear_window(cub->mlx, cub->mlx_win);
+		floor_ceil(cub);
+		rays(cub);
+		mini_map(cub);
+		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->data.img, 0, 0);
+		build_msg(cub);
 		pthread_mutex_lock(&cub->mut);
 		mlx_put_image_to_window(cub->mlx, cub->mlx_win, cub->guns_arr[inc],
 			WIDTH / 2 - 250, HEIGHT - 281);
@@ -102,7 +106,7 @@ int	main(int ac, char **av)
 	re_render_images(cub);
 	mlx_loop_hook(cub->mlx, &anim, cub);
 	mlx_hook(cub->mlx_win, 2, 0, event_handler, cub);
-	mlx_hook(cub->mlx_win, 17, 0, exit_mouse, cub);
+	mlx_hook(cub->mlx_win, 17, 0, &exit_mouse, cub);
 	mlx_hook(cub->mlx_win, 4, 0, change_view_mouse, cub);
 	mlx_loop(cub->mlx);
 }

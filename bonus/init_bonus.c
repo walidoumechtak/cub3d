@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/23 16:47:03 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 11:21:45 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	fill_guns_array(t_cub *cub)
 	j = 0;
 	while (j < 12)
 	{
-		c = ft_itoa(i);
+		c = ft_itoa(i++);
 		temp = ft_strjoin(c, ".xpm");
 		free(c);
 		file_name = ft_strjoin("textures/gun/", temp);
@@ -56,8 +56,12 @@ void	fill_guns_array(t_cub *cub)
 		cub->guns_arr[j] = mlx_xpm_file_to_image(cub->mlx, file_name,
 				&cub->size_gun, &cub->size_gun);
 		free(file_name);
+		if (cub->guns_arr[j] == NULL)
+		{
+			ft_putendl_fd("Something wrong with your textures !!!", 2);
+			exit(1);
+		}
 		j++;
-		i++;
 	}
 }
 
@@ -73,6 +77,12 @@ void	init_textures(t_cub *cub)
 			&cub->tex_size.we_width, &cub->tex_size.we_height);
 	cub->door = mlx_xpm_file_to_image(cub->mlx, "textures/door.xpm",
 			&cub->door_width, &cub->door_height);
+	if (!cub->no_ptr || !cub->ea_ptr || !cub->so_ptr || !cub->we_ptr
+		|| !cub->door)
+	{
+		ft_putendl_fd("Something wrong with your textures !!!", 2);
+		exit(1);
+	}
 }
 
 void	init_str(t_cub *cub)
