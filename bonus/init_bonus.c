@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:22:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/24 11:26:30 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:02:37 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,27 @@ void	init_textures(t_cub *cub)
 	}
 }
 
+void	starting_player(t_cub *cub)
+{
+	if (cub->map[cub->ply.yp][cub->ply.xp] == 'N')
+		cub->ply.dir = deg_to_rad(270);
+	else if (cub->map[cub->ply.yp][cub->ply.xp] == 'S')
+		cub->ply.dir = deg_to_rad(90);
+	else if (cub->map[cub->ply.yp][cub->ply.xp] == 'W')
+		cub->ply.dir = deg_to_rad(180);
+	else if (cub->map[cub->ply.yp][cub->ply.xp] == 'E')
+		cub->ply.dir = deg_to_rad(0);
+}
+
 void	init_str(t_cub *cub)
 {
 	get_player_cord(cub);
-	cub->ply.pixel_x = cub->ply.xp * CARRE;
-	cub->ply.pixel_y = cub->ply.yp * CARRE;
 	cub->ply.move_speed = 3;
 	cub->ply.dir_vec = 0;
 	cub->is_wall = 0;
-	if (cub->map[cub->ply.yp][cub->ply.xp] == 'N')
-		cub->ply.dir = deg_to_rad(270);
+	starting_player(cub);
+	cub->ply.pixel_x = cub->ply.xp * CARRE + 10;
+	cub->ply.pixel_y = cub->ply.yp * CARRE + 10;
 	cub->ray_dir = (cub->ply.dir - (deg_to_rad(30)));
 	cub->view = 2;
 	cub->dis_proj_plan = (WIDTH / cub->view) / tan(deg_to_rad(30));
