@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_map_wall.c                                :+:      :+:    :+:   */
+/*   ft_check_map_wall_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:28 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/10 11:09:14 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 10:07:54 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
-
-static void	free_map(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map && map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
+#include "ft_cub3d_bonus.h"
 
 static int	ft_check_pos(char **map, int i, int j, int flag)
 {

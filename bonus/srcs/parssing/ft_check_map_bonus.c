@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_cub3d.h"
+#include "ft_cub3d_bonus.h"
 
 int	ft_check_map_char(char **map)
 {
@@ -100,7 +100,12 @@ int	ft_check_data_of_map(t_cub *cub)
 
 int	ft_check_map(t_cub *cub, char *file_path)
 {
-
+	cub->no = NULL;
+	cub->so = NULL;
+	cub->we = NULL;
+	cub->ea = NULL;
+	cub->f = NULL;
+	cub->c = NULL;
 	cub->map = get_map(file_path);
 	if (!cub->map)
 		return (EXIT_FAILURE);
