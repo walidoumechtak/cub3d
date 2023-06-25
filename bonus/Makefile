@@ -6,14 +6,14 @@
 #    By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 12:04:27 by hbenfadd          #+#    #+#              #
-#    Updated: 2023/06/24 11:28:34 by woumecht         ###   ########.fr        #
+#    Updated: 2023/06/25 09:59:52 by woumecht         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= Cub3d
 UNAME_S := $(shell uname -s)
 CC			= cc
-CFLAGS		=  -Wall -Wextra -Werror -fsanitize=address
+CFLAGS		=  -Wall -Wextra -Werror #-fsanitize=address
 LIBFT_DIR	= ./libft
 HEADER		= -I./inc -I./libft/inc  -I/usr/local/include 
 # Default for macOS
