@@ -15,17 +15,26 @@
 void	ft_clear_floor_ceiling(t_cub *cub)
 {
 	char	*tmp;
-	int		index;
+	int		i;
+	int		j;
 
-	index = 0;
-	while (cub->f[index] && cub->c[index] && index < 3)
+	i = 0;
+	while (cub->f[i] && cub->c[i] && i < 3)
 	{
-		tmp = cub->f[index];
-		cub->f[index] = ft_strtrim(cub->f[index], " ");
+		j = -1;
+		tmp = cub->f[i];
+		cub->f[i] = ft_strtrim(cub->f[i], " ");
+		while (cub->f[i][++j])
+			if (!ft_isdigit(cub->f[i][j]) && cub->f[i][j] != ',')
+				ft_putstr_fd("Error\nInvalid floor color\n", 2), exit(1);
 		free(tmp);
-		tmp = cub->c[index];
-		cub->c[index] = ft_strtrim(cub->c[index], " ");
+		tmp = cub->c[i];
+		cub->c[i] = ft_strtrim(cub->c[i], " ");
+		j = -1;
+		while (cub->c[i][++j])
+			if (!ft_isdigit(cub->c[i][j]) && cub->c[i][j] != ',')
+				ft_putstr_fd("Error\nInvalid ceiling color\n", 2), exit(1);
 		free(tmp);
-		index++;
+		i++;
 	}
 }

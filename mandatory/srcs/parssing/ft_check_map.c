@@ -16,26 +16,28 @@ int	ft_check_map_char(char **map)
 {
 	int	i;
 	int	j;
+	int player;
 
-	i = 0;
-	j = 0;
-	while (map && map[i] && i < 6)
-		i++;
-	if (i < 5)
-		return (0);
-	while (map[i])
+	i = 5;
+	player = 0;
+	while (map && map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
-			if (map[i][j] != '0' && map[i][j] != '1'
-			&& map[i][j] != 'N' && map[i][j] != 'S' && map[i][j] != 'E'
-			&& map[i][j] != 'W' && map[i][j] != ' ')
+			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'N'
+				&& map[i][j] != 'S' && map[i][j] != 'E' && map[i][j] != 'W'
+				&& map[i][j] != ' ')
 				return (0);
-			j++;
+			else if (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E'
+				|| map[i][j] == 'W')
+				player++;
+			if (player != 1 && player != 0)
+				return (0);
 		}
-		i++;
 	}
+	if (player != 1)
+		return (0);
 	return (1);
 }
 
@@ -78,15 +80,13 @@ int	ft_check_for_space(char *str)
 int	ft_check_data_of_map(t_cub *cub)
 {
 	int	i;
-	int	j;
 
 	i = -1;
-	j = 0;
 	while (cub->map[++i] && i < 6)
 	{
-		if (cub->map[i][j] == 'N' || cub->map[i][j] == 'S'
-			|| cub->map[i][j] == 'E' || cub->map[i][j] == 'W'
-			|| cub->map[i][j] == 'F' || cub->map[i][j] == 'C')
+		if (cub->map[i][0] == 'N' || cub->map[i][0] == 'S'
+			|| cub->map[i][0] == 'E' || cub->map[i][0] == 'W'
+			|| cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
 			ft_set_data(cub, i, 0);
 		else
 			return (1);
@@ -112,8 +112,13 @@ int	ft_check_map(t_cub *cub, char *file_path)
 	cub->ea = NULL;
 	cub->f = NULL;
 	cub->c = NULL;
+	int			i;
+
+	i = 0;
 	cub->map = get_map(file_path);
-	if (!cub->map)
+	while (cub->map && cub->map[i] && i < 6)
+		i++;
+	if (i < 5)
 		return (EXIT_FAILURE);
 	if (!ft_check_map_char(cub->map))
 		return (EXIT_FAILURE);

@@ -61,6 +61,26 @@ static char	*read_map(int fd)
 	return (tmp);
 }
 
+void	ft_check_double_newline(char **map, char *tmp)
+{
+	int	i;
+	char	*tmp2;
+
+	i = -1;
+	while(map && map[++i] && i < 6)
+		;
+	if (i  == 6)
+		tmp2 = ft_strnstr(tmp, map[i], ft_strlen(tmp));
+	else
+		return;
+	i = -1;
+	while(tmp2 && tmp2[++i])
+	{
+		if (tmp2[i] == '\n' && tmp2[i + 1] == '\n')
+			ft_putstr_fd("Error\nWrong map\n", 2), exit(1);
+	}
+}
+
 /**
  * @brief get the map from the file and return it as a 2D array of char
  * @param file_path path to the file that contains the map
@@ -79,6 +99,7 @@ char	**get_map(char *file_path)
 	if (!tmp)
 		return (NULL);
 	map = ft_split(tmp, '\n');
+	ft_check_double_newline(map, tmp);
 	if (!map)
 		return (ft_putstr_fd("Error\nFailed to split string\n", 2), NULL);
 	free(tmp);
