@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 11:10:31 by woumecht          #+#    #+#             */
-/*   Updated: 2023/06/24 13:42:39 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:27:45 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	check_for_wall(t_cub *cub)
 {
 	if (cub->map[(int)((cub->ph_inter_y) / CARRE)][(int)((cub->ph_inter_x)
-			/ CARRE)] == '1' || cub->map[(int)(cub->ph_inter_y / CARRE)][(int)(cub->ph_inter_x
-			/ CARRE)] == '2')
+			/ CARRE)] == '1' || cub->map[(int)(cub->ph_inter_y
+			/ CARRE)][(int)(cub->ph_inter_x / CARRE)] == '2')
 		return (1);
 	else
 	{

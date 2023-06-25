@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+         #
+#    By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/04 12:04:27 by hbenfadd          #+#    #+#              #
-#    Updated: 2023/06/25 11:10:43 by hbenfadd         ###   ########.fr        #
+#    Updated: 2023/06/25 11:29:24 by woumecht         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CLIB			= -L./libft -lft -L/usr/local/lib -lmlx -framework OpenGL -framework AppK
 RM				= rm -rf
 
 PARSSING_SRCS	= ft_check_map.c get_map.c ft_check_map_wall.c ft_copy_map_to_rectangle_map.c  \
-				  ft_clear_floor_ceiling.c ft_count_comma.c ft_convert_color_bonus.c\
+				  ft_clear_floor_ceiling.c ft_count_comma.c ft_convert_color.c\
 
 RAYCAST_SRCS 	= draw_wall.c even_handler.c find_first_ray.c  floor_ciel.c init_point_hor.c \
 					init_point_ver.c move_player.c movement.c my_mlx_pixel_put.c ray_cast_hor.c \
