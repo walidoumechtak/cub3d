@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub3d.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/21 11:41:43 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/24 13:06:12 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,8 @@ int				ft_check_map(t_cub *cub, char *file_path);
 char			**get_map(char *file_path);
 int				ft_check_map_wall(t_cub *cub);
 char			**ft_copy_map_to_rectangle_map(char **map);
-
+void			ft_clear_floor_ceiling(t_cub *cub);
+int				ft_count_comma(char *str);
 /* --------- raycasting prototype ------------*/
 
 void			view_of_player(t_cub *cub, int key);
