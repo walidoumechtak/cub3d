@@ -6,7 +6,7 @@
 /*   By: woumecht <woumecht@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:44:40 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 11:27:03 by woumecht         ###   ########.fr       */
+/*   Updated: 2023/06/25 09:55:35 by woumecht         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int ac, char **av)
 	re_render_images(cub);
 	mlx_loop_hook(cub->mlx, &anim, cub);
 	mlx_hook(cub->mlx_win, 2, 0, event_handler, cub);
-	mlx_hook(cub->mlx_win, 17, 0, &exit_mouse, cub);
+	mlx_hook(cub->mlx_win, 17, 0, exit_mouse, cub);
 	mlx_hook(cub->mlx_win, 4, 0, change_view_mouse, cub);
 	mlx_loop(cub->mlx);
 }
