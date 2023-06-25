@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/24 11:48:49 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 13:17:13 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:20:38 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ void	ft_clear_floor_ceiling(t_cub *cub)
 		cub->f[i] = ft_strtrim(cub->f[i], " ");
 		while (cub->f[i][++j])
 			if (!ft_isdigit(cub->f[i][j]) && cub->f[i][j] != ',')
-				ft_putstr_fd("Error\nInvalid floor color\n", 2), exit(1);
+				(ft_putstr_fd("Error\nInvalid floor color\n", 2), exit(1));
 		free(tmp);
 		tmp = cub->c[i];
 		cub->c[i] = ft_strtrim(cub->c[i], " ");
 		j = -1;
 		while (cub->c[i][++j])
 			if (!ft_isdigit(cub->c[i][j]) && cub->c[i][j] != ',')
-				ft_putstr_fd("Error\nInvalid ceiling color\n", 2), exit(1);
+				(ft_putstr_fd("Error\nInvalid ceiling color\n", 2), exit(1));
 		free(tmp);
 		i++;
 	}

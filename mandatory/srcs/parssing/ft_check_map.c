@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/07 17:43:32 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 13:08:56 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:20:14 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_check_map_char(char **map)
 {
 	int	i;
 	int	j;
-	int player;
+	int	player;
 
 	i = 5;
 	player = 0;
@@ -106,15 +106,15 @@ int	ft_check_data_of_map(t_cub *cub)
 
 int	ft_check_map(t_cub *cub, char *file_path)
 {
+	int	i;
+
+	i = 0;
 	cub->no = NULL;
 	cub->so = NULL;
 	cub->we = NULL;
 	cub->ea = NULL;
 	cub->f = NULL;
 	cub->c = NULL;
-	int			i;
-
-	i = 0;
 	cub->map = get_map(file_path);
 	while (cub->map && cub->map[i] && i < 6)
 		i++;
@@ -126,9 +126,7 @@ int	ft_check_map(t_cub *cub, char *file_path)
 		return (EXIT_FAILURE);
 	if (!ft_check_map_wall(cub))
 		return (EXIT_FAILURE);
-	cub->floor_color = ft_atoi(cub->f[0]) << 16 | ft_atoi(cub->f[1]) << 8
-		| ft_atoi(cub->f[2]);
-	cub->ceiling_color = ft_atoi(cub->c[0]) << 16 | ft_atoi(cub->c[1]) << 8
-		| ft_atoi(cub->c[2]);
+	cub->floor_color = ft_convert_color(cub->f);
+	cub->ceiling_color = ft_convert_color(cub->c);
 	return (EXIT_SUCCESS);
 }

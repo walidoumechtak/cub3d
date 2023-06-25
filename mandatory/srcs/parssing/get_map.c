@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:36:52 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 10:15:36 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:22:15 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,23 @@ static char	*_append_buffer_to_str(char *str, char *buffer)
 
 void	ft_check_double_newline(char **map, char *tmp)
 {
-	int	i;
+	int		i;
 	char	*tmp2;
 
 	i = -1;
-	while(map && map[++i] && i < 6)
+	while (map && map[++i] && i < 6)
 		;
-	if (i  == 6)
+	if (i == 6)
 		tmp2 = ft_strnstr(tmp, map[i], ft_strlen(tmp));
 	else
-		return;
+		return ;
 	i = -1;
-	while(tmp2 && tmp2[++i])
+	while (tmp2 && tmp2[++i])
 	{
 		if (tmp2[i] == '\n' && tmp2[i + 1] == '\n')
-			ft_putstr_fd("Error\nWrong map\n", 2), exit(1);
+			(ft_putstr_fd("Error\nWrong map\n", 2), exit(1));
 	}
 }
-
 
 /**
  * @brief read the map from the file and return it as a string

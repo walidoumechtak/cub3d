@@ -6,7 +6,7 @@
 /*   By: hbenfadd <hbenfadd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 17:00:56 by hbenfadd          #+#    #+#             */
-/*   Updated: 2023/06/24 13:06:12 by hbenfadd         ###   ########.fr       */
+/*   Updated: 2023/06/25 11:09:53 by hbenfadd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-
-/* Structures */
 
 # define T_PI 6.28318530
 # define ORANGE 0xff7f00
@@ -123,6 +121,8 @@ int				ft_check_map_wall(t_cub *cub);
 char			**ft_copy_map_to_rectangle_map(char **map);
 void			ft_clear_floor_ceiling(t_cub *cub);
 int				ft_count_comma(char *str);
+int				ft_convert_color(char **str);
+
 /* --------- raycasting prototype ------------*/
 
 void			view_of_player(t_cub *cub, int key);
